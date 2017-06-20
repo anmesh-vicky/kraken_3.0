@@ -1,0 +1,9 @@
+<launch>
+	<include file="$(find kraken_visualization)/launch/dynamics.launch">
+	   <arg name="namespace" value="kraken_simulator" />
+	   <arg name="params" value="$(find simulator_physics_model)/config/dynamics_g500.yaml" />
+	</include>
+	 
+	<arg name="thrusters_topic" default="/kraken/simulator/thrusters_input" />
+ <node name="keyboard_command" pkg="simulator_physics_model" type="keyboard.py" args="$(arg thrusters_topic)" output="screen" respawn="false"/>
+</launch>

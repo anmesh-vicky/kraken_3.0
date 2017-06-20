@@ -1,0 +1,10 @@
+<launch>
+<arg name="gui" default="False" />
+<param name="robot_description" textfile="/home/anmesh/catkin_ws/src/kraken_3.0/simulator_stack/kraken_visualization/kraken/scenes/kraken_stripped.urdf" />
+<param name="use_gui" value="$(arg gui)"/>
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+<node name="rviz" pkg="rviz" type="rviz" />
+<!--node name="rviz" pkg="rviz" type="rviz" args="/home/viki/catkin_ws/install/share/myrobot_description/myrobot.rviz" required="true" /-->
+</launch>

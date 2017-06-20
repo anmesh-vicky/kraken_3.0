@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot name="kraken">
+  <link name="world_link">
+</link>
   <link name="base_link">
+    <inertial>
+      <mass value="1000"/>
+      <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100"/>
+    </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -14,6 +20,12 @@
       </geometry>
     </collision>
   </link>
+  <joint name="base_link_to_world_link" type="fixed">
+    <parent link="world_link"/>
+    <child link="base_link"/>
+
+  </joint>
+
   <link name="right_heave_thruster">
   </link>
   <link name="left_heave_thruster">
@@ -35,10 +47,13 @@
   <link name= "depth_sensor">
   </link>
 
+
   <!--adding DVL sensor-->
   <link name= "dvl_link">
   </link>
-
+<!-----adding force_sensor--->
+<link name="force_sensor">
+</link>
   <joint name="depth_sensor_to_base_link" type="fixed">
     <parent link="base_link"/>
     <child link="depth_sensor"/>
@@ -104,5 +119,11 @@
     <child link="left_surge_thruster"/>
     <axis xyz="-1 0 0"/>
     <origin rpy="0 0.0 0" xyz="-0.452 0.17 -0.01"/>
+  </joint>
+  <joint name="force_sensor_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="force_sensor"/>
+    <axis xyz="0 0 0"/>
+    <origin rpy="0 0.0 0" xyz="0 0 0"/>
   </joint>
 </robot>
